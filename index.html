@@ -48,7 +48,7 @@
         li.appendChild(icon)
        }
        inputBox.value = "" // after write to be  blank 
-
+        saveData() // last
                   } 
 
 
@@ -59,15 +59,24 @@ function event(hello){
 
        if(hello.target.tagName === "LI"){
          hello.target.classList.toggle("text-decoration-line-through")
+         saveData() // last
        }
       else if(hello.target.tagName === "ICON"){
          hello.target.parentElement.remove();
+         saveData() // last
       }
 }
-     
+     function saveData(){
+        localStorage.setItem("data",listContainer.innerHTML);
 
+     }
+
+function showTask(){
+    listContainer.innerHTML = localStorage.getItem("data");
+
+}
       
-
+showTask()
 
 
 
